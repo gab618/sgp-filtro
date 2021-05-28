@@ -22,17 +22,16 @@ function generateFilterInput() {
     myArray = [];
     for (let i = 0; i < tbody.rows.length; i++) {
       const key = tbody.rows[i].getAttribute("data-row-key");
-      const description = tbody.rows[i].cells[2].innerHTML;
+      const description = tbody.rows[i].cells[2].innerHTML.toLowerCase();
       myArray.push({ key, description });
     }
 
     myFilterInput.addEventListener("keyup", wordFilter);
-    console.log(myArray);
   }, 150);
 }
 
 function wordFilter() {
-  const word = myFilterInput.value;
+  const word = myFilterInput.value.toLowerCase();
   const validKeys = myArray.map((row) => {
     if (row.description.includes(word)) {
       return row.key;
@@ -54,7 +53,6 @@ function handleRootClick() {
 
   if (tabs) {
     tabs.addEventListener("click", generateFilterInput);
-    console.log("tem tab");
   }
 }
 
