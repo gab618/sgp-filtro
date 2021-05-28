@@ -1,21 +1,38 @@
+let root = document.querySelector("#root");
 let myArray = [];
 
-const element = document.querySelector(".sc-jwKygS");
-const myFilter = document.createElement("input");
-element.appendChild(myFilter);
+let myFilterInput = document.createElement("input");
+myFilterInput.type = "search";
+myFilterInput.classList.add("ant-input");
+myFilterInput.style.marginTop = "16px";
+myFilterInput.placeholder = "Filtrar itens";
+let element;
 
-const table = element.getElementsByTagName("table")[1];
-const tbody = table.getElementsByTagName("tbody")[0];
+let table;
+let tbody;
 
-for (let i = 0; i < tbody.rows.length; i++) {
-  const key = tbody.rows[i].getAttribute("data-row-key");
-  const description = tbody.rows[i].cells[2].innerHTML;
-  myArray.push({ key, description });
+function generateFilterInput() {
+  setTimeout(() => {
+    element = document.querySelector(".sc-jwKygS");
+    element.appendChild(myFilterInput);
+
+    table = element.getElementsByTagName("table")[1];
+    tbody = table.getElementsByTagName("tbody")[0];
+
+    myArray = [];
+    for (let i = 0; i < tbody.rows.length; i++) {
+      const key = tbody.rows[i].getAttribute("data-row-key");
+      const description = tbody.rows[i].cells[2].innerHTML;
+      myArray.push({ key, description });
+    }
+
+    myFilterInput.addEventListener("keyup", wordFilter);
+    console.log(myArray);
+  }, 150);
 }
-console.log(myArray);
 
 function wordFilter() {
-  const word = myFilter.value;
+  const word = myFilterInput.value;
   const validKeys = myArray.map((row) => {
     if (row.description.includes(word)) {
       return row.key;
@@ -30,14 +47,15 @@ function wordFilter() {
       row.setAttribute("style", "display: table-row");
     }
   }
-
-  console.log(validKeys);
 }
 
-const tabs = document.querySelector(".ant-tabs-nav-wrap");
+function handleRootClick() {
+  const tabs = document.querySelector(".ant-tabs-nav-wrap");
 
-myFilter.addEventListener("keyup", wordFilter);
+  if (tabs) {
+    tabs.addEventListener("click", generateFilterInput);
+    console.log("tem tab");
+  }
+}
 
-tabs.addEventListener("click", () => {
-  console.log("hihihi");
-});
+root.addEventListener("click", handleRootClick);
