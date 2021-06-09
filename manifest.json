@@ -1,8 +1,10 @@
 {
-  "name": "SGP Filtro",
-  "description": "Filtro de planos de aula para o SGP da prefeitura",
-  "version": "1.0",
+  "name": "SGP filtro planos de aula",
+  "action": {},
   "manifest_version": 3,
+  "version": "0.1",
+  "description": "Filtra as opções de planos de aula",
+  "permissions": ["activeTab", "scripting"],
   "background": {
     "service_worker": "background.js"
   }
