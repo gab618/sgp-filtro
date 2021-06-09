@@ -1,9 +1,22 @@
 {
   "name": "SGP filtro planos de aula",
-  "action": {},
+  "action": {
+    "default_icon": {
+      "16": "/images/logo16.png",
+      "32": "/images/logo32.png",
+      "48": "/images/logo48.png",
+      "128": "/images/logo128.png"
+    }
+  },
+  "icons": {
+    "16": "/images/logo16.png",
+    "32": "/images/logo32.png",
+    "48": "/images/logo48.png",
+    "128": "/images/logo128.png"
+  },
   "manifest_version": 3,
   "version": "0.1",
-  "description": "Filtra as opções de planos de aula",
+  "description": "Filtra as opções de planos de aula da lista no sistema SGP da prefeitura",
   "permissions": ["activeTab", "scripting"],
   "background": {
     "service_worker": "background.js"
