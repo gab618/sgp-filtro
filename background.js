@@ -14,7 +14,7 @@ function runScript() {
 
   function generateFilterInput() {
     setTimeout(() => {
-      element = document.querySelector(".sc-jwKygS");
+      element = document.querySelectorAll(".ant-table-wrapper")[1];
       element.appendChild(myFilterInput);
 
       table = element.getElementsByTagName("table")[1];
